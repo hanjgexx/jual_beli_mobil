@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Daftar Mobil Tersedia</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Merek</th>
+        <th>Model</th>
+        <th>Tahun</th>
+        <th>Harga</th>
+        <th>Aksi</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>Rp {{ "{:,.0f}".format(row[4]) }}</td>
+        <td><a href="{{ url_for('hapus', id=row[0]) }}">Hapus</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
